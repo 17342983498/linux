@@ -3,10 +3,10 @@
 #include <stdlib.h>
 int main()
 {
-    printf("-------begin-------");
+    printf("-------begin-------\n");
     //fflush();
-    //_exit(0);
-    exit(1);
+    exit(0);
+    //exit(1);
     printf("--------end--------\n");
     return 0;
 }
