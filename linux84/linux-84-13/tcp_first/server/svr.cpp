@@ -56,7 +56,8 @@ int main()
         }
         printf("cli say: %s\n",buf);
         memset(buf,'\0',sizeof(buf));
-        const char* str = "i am server: ";
+        const char* str = "i am server ";
+        sleep(1);
         strncpy(buf,str,strlen(str));
         ret = send(newsockfd,buf,strlen(buf),0);
         if(ret<0)
