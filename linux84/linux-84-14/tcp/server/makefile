@@ -1,0 +1,2 @@
+svr_test:svr.cpp
+	g++ $^ -o $@ -g
