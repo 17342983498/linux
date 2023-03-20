@@ -1,0 +1,7 @@
+hello write
+hello fprintf
+hello printf
+hello fwrite
+hello fprintf
+hello printf
+hello fwrite
