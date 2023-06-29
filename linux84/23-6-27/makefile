@@ -1,5 +1,5 @@
-myprocess:myprocess.c
+mytest:test.c
 	gcc -o $@ $^
 .PHONY:clean
 clean:
-	rm -f myprocess
+	rm -f mytest
