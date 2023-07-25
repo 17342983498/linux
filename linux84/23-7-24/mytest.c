@@ -20,21 +20,41 @@ int Func(int num)
 
 int main()
 {
-  pid_t ret=fork();
-  if(ret==0)
+  pid_t id=fork();
+  if(id==0)
   {
     //子进程
-    int cnt=2;
+    int cnt=5;
     while(cnt--)
     {
       printf("我是子进程，我现在活着呢，我离死亡还有%d秒,pid:%d,ppid:%d\n",cnt,getpid(),getppid());
       sleep(1);
     }
-    _exit(0);
+    // int a=10;
+    // a/=0;
+    _exit(123);
   }
-  sleep(5);
-  pid_t ret_id=wait(NULL);
-  printf("我是父进程，等待子进程成功,pid:%d,ppid:%d\n",getpid(),getppid());
+  //sleep(5);
+  while(1)
+  {
+    int status=0;
+    pid_t ret_id=waitpid(id,&status,WNOHANG);
+    if(ret_id==-1)
+    {
+      printf("等待错误!\n");
+      break;
+    }
+    else if(ret_id==0)
+    {
+      printf("子进程还未退出，我干干其他事！\n");
+      sleep(1);
+    }
+    else
+    {
+      printf("我是父进程，等待子进程成功,pid:%d,ppid:%d,status signal:%d,status code:%d\n",getpid(),getppid(),(status&0x7F),((status>>8)&0xff));
+      break;
+    }
+  }
   return 0;
 }
 
