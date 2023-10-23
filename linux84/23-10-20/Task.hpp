@@ -3,13 +3,14 @@
 #include <iostream>
 using namespace std;
 #include <vector>
+#include <unistd.h>
 
 typedef void (*func_t)();
 
 
 void PrintLog()
 {
-    cout << "我是打印日志，我正在执行..." << endl;
+    cout << getpid() <<"我是打印日志，我正在执行..." << endl;
 }
 
 void UpdateLog()
@@ -22,9 +23,9 @@ void DeleteLog()
     cout << "我是删除日志，我正在执行..." << endl;
 }
 
-#define PrintLog 0
-#define UpdateLog 1
-#define DeleteLog 2
+#define Print_Log 0
+#define Update_Log 1
+#define Delete_Log 2
 
 class Task
 {

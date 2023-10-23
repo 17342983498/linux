@@ -1,11 +1,13 @@
 #include <iostream>
 #include <unistd.h>
-#include <cstring>
+#include <string>
 #include <cassert>
 #include <vector>
+#include "Task.hpp"
 using namespace std;
 
 const int gnum = 5;
+Task t;
 
 class EndPoint
 {
@@ -22,9 +24,24 @@ public:
 
 void WaitCommand()
 {
-    int command = 0;
-    int n = read(0, &command, sizeof(int));
-}
+    while (true)
+    {
+        int command = 0;
+        int n = read(0, &command, sizeof(int));
+        if (n == sizeof(int))
+        {
+            t.Execute(command);
+        }
+        else if (n == 0)
+        {
+            break;
+        }
+        else
+        {
+            break;
+        }
+    }
+    }
 
 void CreatProcess(vector<EndPoint> *end_points)
 {
@@ -70,9 +87,17 @@ int main()
 {
     vector<EndPoint> end_points;
     CreatProcess(&end_points);
-    while (1)
+    int num = 0;
+    while (true)
     {
-        
+        //1.选择任务
+        int command = Print_Log;
+        //2.选择进程
+        int index = rand() % end_points.size();
+        //3.下发任务
+        write(end_points[index]._write_fd, &command, sizeof(command));
+
+        sleep(1);
     }
     return 0;
 }
