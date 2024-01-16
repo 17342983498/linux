@@ -1,0 +1,3 @@
+printf->stdout
+fprintf->stdout
+cout->cout

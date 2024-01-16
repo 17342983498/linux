@@ -1,0 +1,9 @@
+hello printf->stdout
+hello printf->stdout
+hello printf->stdout
+hello printf->stdout
+hello fprintf->stdout
+hello fprintf->stdout
+hello fprintf->stdout
+hello fprintf->stdout
+hello fprintf->stdout
